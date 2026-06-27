@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Política de Privacidad de Cerberus Gestor de Contraseñas. Información local-first, cifrado AES-256, permisos nativos y copias de seguridad opcionales en Google Drive.">
+    <meta name="theme-color" content="#1a1a2e">
+    <title>Política de Privacidad | Cerberus Gestor de Contraseñas</title>
+    <style>
+        :root {
+            --navy: #1a1a2e;
+            --navy-dark: #16213e;
+            --cyan: #00d4ff;
+            --cyan-dark: #0099cc;
+            --text: #2f3542;
+            --muted: #5f6b7a;
+            --bg: #f5f7fa;
+            --card: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.12);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo::before {
+            content: "🔐";
+            font-size: 1.6rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1.25rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--cyan);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--navy) 0%, #0f3460 50%, var(--navy-dark) 100%);
+            color: white;
+            padding: 4.5rem 2rem 3rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            margin-bottom: 1rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .hero p {
+            max-width: 760px;
+            margin: 0 auto;
+            font-size: 1.05rem;
+            opacity: 0.95;
+        }
+
+        main {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        article {
+            background: var(--card);
+            border-radius: 14px;
+            padding: 2.5rem;
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: var(--navy);
+            margin-bottom: 1.25rem;
+            border-bottom: 3px solid var(--cyan);
+            padding-bottom: 0.7rem;
+        }
+
+        h3 {
+            font-size: 1.2rem;
+            color: var(--navy-dark);
+            margin: 1.4rem 0 0.7rem;
+        }
+
+        p, li {
+            margin-bottom: 0.9rem;
+            color: var(--text);
+            font-size: 1rem;
+        }
+
+        ul {
+            padding-left: 1.4rem;
+            margin-bottom: 1rem;
+        }
+
+        .intro {
+            background: linear-gradient(135deg, #f0f9ff 0%, #f8fbff 100%);
+            border-left: 4px solid var(--cyan);
+            border-radius: 8px;
+            padding: 1.2rem 1.3rem;
+            margin-bottom: 1.4rem;
+        }
+
+        .note {
+            color: var(--muted);
+            font-size: 0.95rem;
+            margin-top: 0.8rem;
+        }
+
+        .highlight {
+            background: #f7fbff;
+            border: 1px solid rgba(0, 212, 255, 0.25);
+            border-radius: 10px;
+            padding: 1rem 1.1rem;
+            margin: 1rem 0 1.2rem;
+        }
+
+        .contact {
+            margin-top: 1.6rem;
+            padding: 1.1rem 1.2rem;
+            background: #f9fcff;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 153, 204, 0.25);
+        }
+
+        .contact a {
+            color: var(--cyan-dark);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        footer {
+            background: var(--navy);
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: 2rem;
+        }
+
+        footer a {
+            color: var(--cyan);
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 0 1rem;
+            }
+
+            main {
+                padding: 1rem;
+            }
+
+            article {
+                padding: 1.5rem;
+            }
+
+            .hero {
+                padding: 3.5rem 1rem 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Cerberus</div>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="privacidad.html">Privacidad</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Política de Privacidad</h1>
+        <p>Información transparente sobre cómo Cerberus Gestor de Contraseñas protege tus datos, tus permisos y tu privacidad.</p>
+    </section>
+
+    <main>
+        <article>
+            <div class="intro">
+                <p><strong>Esta Política de Privacidad describe cómo Cerberus Gestor de Contraseñas (en adelante, "la Aplicación") trata la información y los datos de los usuarios.</strong> Cerberus es un gestor de contraseñas de alta seguridad diseñado bajo la filosofía "local-first" (prioridad local).</p>
+            </div>
+
+            <h2>1. Recopilación y Uso de Datos (Almacenamiento Local-First)</h2>
+            <p>Cerberus no recopila, no almacena, no monitoriza ni comparte ningún tipo de información personal, credencial, contraseña o dato de navegación en servidores externos de nuestra propiedad.</p>
+            <p>Toda la información que introduces en la Aplicación (nombres de usuario, contraseñas, URLs, notas y categorías) se almacena exclusivamente en el almacenamiento interno de tu dispositivo móvil dentro de una base de datos local fuertemente encriptada de extremo a extremo mediante el protocolo AES-256 (SQLCipher). El descifrado de estos datos se realiza estrictamente en tiempo de ejecución en tu hardware y bajo la validación de tu clave maestra o credenciales biométricas del sistema operativo.</p>
+
+            <h2>2. Permisos de la Aplicación y Terceros</h2>
+            <p>Para ofrecer sus funciones de seguridad avanzadas, la Aplicación requiere los siguientes permisos nativos, los cuales se ejecutan de forma 100% aislada:</p>
+            <ul>
+                <li><strong>Autenticación Biométrica ("local_auth"):</strong> Utilizada exclusivamente para validar la identidad del usuario en el dispositivo (huella dactilar o reconocimiento facial) para desbloquear el llavero local. Nosotros no tenemos acceso a tus datos biométricos, los cuales son gestionados de forma segura por el hardware de tu sistema operativo.</li>
+                <li><strong>Acceso a Internet:</strong> Requerido únicamente para dos funciones específicas solicitadas explícitamente por el usuario:
+                    <ul>
+                        <li>Descarga e inserción en caché local de los logotipos de los servicios web (Favicons) de forma directa desde el dominio oficial del servicio, sin intermediarios ni registros de telemetría.</li>
+                        <li>El flujo de copia de seguridad opcional.</li>
+                    </ul>
+                </li>
+                <li><strong>Validación de Compras Integradas (In-App Purchases):</strong> El acceso a la red es estrictamente necesario para conectar de forma segura y anónima con los servicios oficiales de facturación de la tienda de aplicaciones (Google Play Billing API). Este proceso se realiza de forma local desde el dispositivo para verificar el estado de los pagos o activar las funciones Premium adquiridas por el usuario, sin recolectar ni almacenar datos bancarios en servidores del desarrollador.</li>
+            </ul>
+
+            <h2>3. Sincronización y Copias de Seguridad (Google Drive API)</h2>
+            <p>La Aplicación ofrece una función opcional de copia de seguridad en la nube utilizando la API oficial de Google Drive:</p>
+            <ul>
+                <li><strong>Uso del alcance restringido (appDataFolder):</strong> Cerberus interactúa única y exclusivamente con el directorio especial restringido de datos de configuración de aplicaciones de Google Drive (drive.appdata). La Aplicación no solicita, no recopila, ni tiene acceso a ningún otro archivo, documento, foto o carpeta personal almacenada en la cuenta de Google Drive del usuario.</li>
+                <li><strong>Sincronización Eficiente y Automatizada:</strong> Una vez que el usuario activa e inicia sesión por primera vez en esta función, la Aplicación automatiza el respaldo subiendo de forma segura el archivo cifrado a Google Drive cada vez que se detecta un cambio o actualización en el llavero local. Asimismo, el usuario mantiene la capacidad de forzar una subida o descarga de forma manual en cualquier momento desde los ajustes.</li>
+                <li><strong>Seguridad y Cifrado de Vanguardia:</strong> Toda la información que se exporta o respalda fuera de la bóveda local se procesa bajo los más estrictos estándares de seguridad informática. En el caso de las copias de seguridad opcionales en la nube (Google Drive), la Aplicación transfiere el archivo de base de datos protegido mediante el cifrado nativo de SQLCipher (AES-256 y PBKDF2 con 600.000 iteraciones). Para las exportaciones manuales a archivos locales (como el formato .cjson), se aplica un blindaje independiente utilizando el protocolo AES-256-GCM y derivación de clave mediante Argon2id. En ningún escenario el desarrollador de Cerberus cuenta con servidores intermedios, canales de interceptación ni capacidad técnica para acceder, leer o descifrar tus datos.</li>
+                <li>El uso que Cerberus hace de la información obtenida mediante las API de Google se ajusta a la Política de Datos de Usuario de los Servicios de API de Google, incluidos los requisitos de Uso Limitado (Google API Services User Data Policy).</li>
+            </ul>
+
+            <h2>4. Seguridad de los Datos</h2>
+            <p>Para blindar tu privacidad visual y evitar fugas pasivas de información, la Aplicación implementa el flag de seguridad nativo del sistema operativo (<strong>FLAG_SECURE</strong>). Esto prohíbe de forma estricta las capturas y grabaciones de pantalla dentro de la app, y oculta completamente el contenido de la interfaz en el menú de aplicaciones recientes (multitarea) de tu dispositivo. Asimismo, se ha deshabilitado el respaldo automático del sistema Android (allowBackup="false") para evitar copias descontroladas por parte del sistema operativo.</p>
+
+            <h2>5. Cambios en esta Política de Privacidad</h2>
+            <p>Nos reservamos el derecho de actualizar esta Política de Privacidad en futuras versiones de la Aplicación para reflejar mejoras o cambios técnicos. Cualquier cambio sustancial se notificará de forma transparente dentro de la propia interfaz de Cerberus.</p>
+
+            <h2>6. Contacto</h2>
+            <p>Si tienes dudas o preguntas sobre el funcionamiento local y la privacidad de Cerberus, puedes ponerte en contacto a través de:</p>
+            <div class="contact">
+                <a href="mailto:cerberus.keypass@gmail.com">cerberus.keypass@gmail.com</a>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <p>Cerberus Gestor de Contraseñas</p>
+        <p><a href="index.html">Volver a la landing page</a></p>
+    </footer>
+</body>
+</html>
