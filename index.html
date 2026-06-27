@@ -294,6 +294,33 @@
             box-shadow: 0 8px 25px rgba(255, 107, 107, 0.5);
         }
 
+        .terms-section {
+            background: linear-gradient(135deg, #f8fbff 0%, #f0f9ff 100%);
+            border: 2px solid rgba(0, 212, 255, 0.25);
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .terms-link {
+            display: inline-block;
+            background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+            margin-top: 1rem;
+        }
+
+        .terms-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 212, 255, 0.5);
+        }
+
         /* Contact Section */
         .contact-info {
             display: grid;
@@ -553,8 +580,18 @@
             <p style="font-size: 1.1rem; color: #333; margin-bottom: 1rem;">
                 Para conocer en detalle cómo Cerberus protege y respeta tu privacidad, incluyendo nuestras políticas de datos y cumplimiento normativo, consulta nuestro documento legal oficial:
             </p>
-            <a href="https://sites.google.com/view/cerberus-gestor-contrasenas" class="privacy-link" target="_blank" rel="noopener noreferrer">
+            <a href="https://david-cerberus.github.io/Cerberus-Gestor/privacidad.html" class="privacy-link" target="_blank" rel="noopener noreferrer">
                 Política de Privacidad de Cerberus Gestor de Contraseñas
+            </a>
+        </section>
+
+        <section class="terms-section">
+            <h2 style="color: #1a1a2e; border-color: #00d4ff; margin-bottom: 1rem;">Condiciones del Servicio</h2>
+            <p style="font-size: 1.1rem; color: #333; margin-bottom: 1rem;">
+                Revisa las condiciones de uso de Cerberus, incluyendo su enfoque local-first, la responsabilidad del usuario sobre su clave maestra y las funciones premium opcionales.
+            </p>
+            <a href="https://david-cerberus.github.io/Cerberus-Gestor/terminos.html" class="terms-link" target="_blank" rel="noopener noreferrer">
+                Ver Términos y Condiciones de Servicio
             </a>
         </section>
 
