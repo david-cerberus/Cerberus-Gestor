@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cerberus Gestor de Contraseñas - Administrador de contraseñas local-first, offline-first, sin publicidad ni rastreadores. Seguridad de nivel empresarial con criptografía avanzada.">
+    <meta name="theme-color" content="#1a1a2e">
+    <title>Cerberus Gestor de Contraseñas</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+
+        /* Header y Navegación */
+        header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo::before {
+            content: "🔐";
+            font-size: 1.8rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: #00d4ff;
+        }
+
+        /* Contenedor principal */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 50%, #16213e 100%);
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.95;
+            animation: fadeInUp 0.8s ease 0.2s backwards;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            animation: fadeInUp 0.8s ease 0.4s backwards;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 212, 255, 0.5);
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Secciones de contenido */
+        section {
+            background: white;
+            border-radius: 12px;
+            padding: 3rem 2rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: #1a1a2e;
+            margin-bottom: 2rem;
+            border-bottom: 3px solid #00d4ff;
+            padding-bottom: 1rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            color: #16213e;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Sección: Propósito */
+        .purpose-section p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight {
+            background: #f0f9ff;
+            border-left: 4px solid #00d4ff;
+            padding: 1.5rem;
+            border-radius: 4px;
+            margin: 1.5rem 0;
+        }
+
+        .highlight strong {
+            color: #1a1a2e;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #f8f9ff 0%, #f0f3ff 100%);
+            padding: 2rem;
+            border-radius: 8px;
+            border-left: 4px solid #00d4ff;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h4 {
+            font-size: 1.3rem;
+            color: #1a1a2e;
+            margin-bottom: 0.8rem;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        /* Technical Architecture */
+        .tech-specs {
+            background: #1a1a2e;
+            color: white;
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+            font-family: 'Courier New', monospace;
+        }
+
+        .tech-specs h3 {
+            color: #00d4ff;
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+
+        .tech-specs p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        .tech-item {
+            margin: 1.5rem 0;
+            padding-left: 1.5rem;
+            border-left: 2px solid #00d4ff;
+        }
+
+        .tech-item strong {
+            color: #00d4ff;
+        }
+
+        /* Privacy Section */
+        .privacy-notice {
+            background: linear-gradient(135deg, #fff5f0 0%, #fff9f5 100%);
+            border: 2px solid #ff6b6b;
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .privacy-link {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+            margin-top: 1rem;
+            display: inline-block;
+        }
+
+        .privacy-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.5);
+        }
+
+        /* Contact Section */
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 8px;
+            border-top: 3px solid #00d4ff;
+        }
+
+        .contact-item h4 {
+            color: #1a1a2e;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .contact-item a {
+            color: #00d4ff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: #0099cc;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a2e;
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+            opacity: 0.8;
+        }
+
+        footer a {
+            color: #00d4ff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: white;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            section {
+                padding: 2rem 1rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                padding: 0 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 3rem 1rem;
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            h3 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Encabezado y Navegación -->
+    <header>
+        <nav class="container">
+            <div class="logo">Cerberus</div>
+            <ul>
+                <li><a href="#proposito">Propósito</a></li>
+                <li><a href="#caracteristicas">Características</a></li>
+                <li><a href="#soporte">Soporte</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Sección Hero -->
+    <section class="hero">
+        <div class="container">
+            <h1>Cerberus Gestor de Contraseñas</h1>
+            <p>La solución más segura para administrar tus contraseñas de forma local, sin conexión a internet ni rastreadores. Criptografía de nivel empresarial al alcance de tus manos.</p>
+            <button class="cta-button" onclick="document.getElementById('caracteristicas').scrollIntoView({behavior: 'smooth'})">Descubre la Seguridad</button>
+        </div>
+    </section>
+
+    <!-- Sección de Propósito -->
+    <main class="container">
+        <section id="proposito" class="purpose-section">
+            <h2>Sobre Cerberus</h2>
+            <p>
+                Cerberus Gestor de Contraseñas es una aplicación de escritorio y móvil diseñada bajo la filosofía <strong>local-first (offline-first)</strong>. Esto significa que todas tus contraseñas, datos sensibles y configuraciones se almacenan exclusivamente en tu dispositivo, bajo tu control total.
+            </p>
+            <p>
+                <strong>No existe publicidad, no hay rastreadores, no hay conexión forzada a servidores remotos.</strong> La privacidad y seguridad no son características opcionales, sino el fundamento de la arquitectura de Cerberus.
+            </p>
+            
+            <div class="highlight">
+                <strong>🔒 Principio Core:</strong> Tu información sensible nunca abandona tu dispositivo a menos que TÚ decidas explícitamente sincronizarla con tus propios servicios en la nube (Google Drive personal).
+            </div>
+
+            <h3>¿Por qué elegir Cerberus?</h3>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h4>Seguridad de Nivel Empresarial</h4>
+                    <p>Criptografía militar implementada en una aplicación accesible. Ningún compromiso en seguridad.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h4>Completamente Offline</h4>
+                    <p>Funciona sin conexión a internet. Accede a tus contraseñas cuando y donde quieras, sin dependencias externas.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔐</div>
+                    <h4>Tu Control Total</h4>
+                    <p>Eres el único propietario de tus datos. Sincronización opcional y solamente con servicios que TÚ controlas.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">✅</div>
+                    <h4>Sin Rastreadores</h4>
+                    <p>No colectamos datos de uso, análisis de comportamiento ni telemetría. Zero tracking garantizado.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💾</div>
+                    <h4>Respaldos Manuales</h4>
+                    <p>Crea copias de seguridad encriptadas locales cuando lo necesites. Portabilidad sin sacrificar seguridad.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">☁️</div>
+                    <h4>Sincronización Privada Opcional</h4>
+                    <p>Si lo deseas, sincroniza con Google Drive en tu carpeta privada aislada "appDataFolder".</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Arquitectura Técnica -->
+        <section id="caracteristicas">
+            <h2>Arquitectura Criptográfica</h2>
+            <p>
+                Cerberus implementa una arquitectura de seguridad multicapa que garantiza la protección máxima de tus datos sensibles. Cada componente está diseñado con rigurosos estándares criptográficos reconocidos internacionalmente.
+            </p>
+
+            <div class="tech-specs">
+                <h3>📊 Especificaciones Técnicas Detalladas</h3>
+                
+                <div class="tech-item">
+                    <strong>1. Base de Datos Local Blindada (SQLCipher)</strong>
+                    <p>
+                        La base de datos interna de Cerberus está completamente cifrada mediante SQLCipher, un motor de base de datos SQL que integra encriptación transparente a nivel de página. Especificaciones:
+                    </p>
+                    <ul style="margin-left: 1.5rem; line-height: 1.8;">
+                        <li><strong>Algoritmo de Cifrado:</strong> AES-256 en modo CBC (Cipher Block Chaining)</li>
+                        <li><strong>Función de Derivación de Clave:</strong> PBKDF2-HMAC-SHA256</li>
+                        <li><strong>Iteraciones de Derivación:</strong> 600.000 iteraciones (estándar NIST actualizado)</li>
+                        <li><strong>Tamaño de Página:</strong> 4096 bytes encriptados</li>
+                        <li><strong>Validación de Integridad:</strong> HMAC para detectar alteraciones</li>
+                    </ul>
+                </div>
+
+                <div class="tech-item">
+                    <strong>2. Copias de Seguridad Manuales Encriptadas (.cjson)</strong>
+                    <p>
+                        Exporta tus datos en formato JSON encriptado (.cjson) con tecnología de vanguardia para máxima durabilidad y portabilidad. Especificaciones:
+                    </p>
+                    <ul style="margin-left: 1.5rem; line-height: 1.8;">
+                        <li><strong>Algoritmo de Derivación de Clave:</strong> Argon2id (resistente a ataques GPU/ASIC)</li>
+                        <li><strong>Parámetros Argon2id:</strong> Configurados según recomendaciones OWASP 2023</li>
+                        <li><strong>Algoritmo de Cifrado:</strong> AES-256-GCM (Galois/Counter Mode)</li>
+                        <li><strong>Autenticación:</strong> Tag de autenticación integrado (GCM authentication tag)</li>
+                        <li><strong>Formato de Salida:</strong> JSON estructurado con metadatos criptográficos</li>
+                        <li><strong>Portabilidad:</strong> Importable directamente en otra instancia de Cerberus</li>
+                    </ul>
+                </div>
+
+                <div class="tech-item">
+                    <strong>3. Sincronización y Backup en la Nube Privada (Google Drive)</strong>
+                    <p>
+                        La sincronización con Google Drive es completamente opcional y está diseñada para máxima privacidad. Especificaciones:
+                    </p>
+                    <ul style="margin-left: 1.5rem; line-height: 1.8;">
+                        <li><strong>Interacción API:</strong> Exclusivamente con la carpeta restringida "appDataFolder"</li>
+                        <li><strong>Cifrado End-to-End:</strong> Los datos se cifran ANTES de salir de tu dispositivo</li>
+                        <li><strong>Aislamiento de Datos:</strong> Google no puede acceder a los datos descifrados</li>
+                        <li><strong>Sincronización Selectiva:</strong> Controla qué datos se sincronizan y cuándo</li>
+                        <li><strong>Revocación de Permisos:</strong> Desactiva la sincronización en cualquier momento</li>
+                        <li><strong>Cumplimiento:</strong> Sigue políticas de privacidad de Play Store y Google Cloud</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="highlight">
+                <strong>⚠️ Nota de Seguridad Crítica:</strong> En el caso improbable de que alguien acceda a tu dispositivo o a los archivos de respaldo, los datos permanecen 100% protegidos detrás de múltiples capas de criptografía. La única forma de acceder es con tu contraseña maestra.
+            </div>
+        </section>
+
+        <!-- Sección Legal y Privacidad -->
+        <section class="privacy-notice">
+            <h2 style="color: #1a1a2e; border-color: #ff6b6b; margin-bottom: 1rem;">Compromiso con tu Privacidad</h2>
+            <p style="font-size: 1.1rem; color: #333; margin-bottom: 1rem;">
+                Para conocer en detalle cómo Cerberus protege y respeta tu privacidad, incluyendo nuestras políticas de datos y cumplimiento normativo, consulta nuestro documento legal oficial:
+            </p>
+            <a href="https://sites.google.com/view/cerberus-gestor-contrasenas" class="privacy-link" target="_blank" rel="noopener noreferrer">
+                Política de Privacidad de Cerberus Gestor de Contraseñas
+            </a>
+        </section>
+
+        <!-- Sección de Soporte -->
+        <section id="soporte">
+            <h2>Soporte y Contacto</h2>
+            <p>
+                Si tienes preguntas, necesitas soporte técnico o deseas reportar un problema de seguridad, nos gustaría saber de ti. Estamos comprometidos con proporcionar la mejor experiencia posible.
+            </p>
+
+            <div class="contact-info">
+                <div class="contact-item">
+                    <h4>📧 Email de Soporte</h4>
+                    <p>Para consultas generales y soporte técnico:</p>
+                    <a href="mailto:support@cerberus-gestor.dev">support@cerberus-gestor.dev</a>
+                </div>
+                <div class="contact-item">
+                    <h4>🔒 Reporte de Seguridad</h4>
+                    <p>Para vulnerabilidades de seguridad (coordenada):</p>
+                    <a href="mailto:security@cerberus-gestor.dev">security@cerberus-gestor.dev</a>
+                </div>
+                <div class="contact-item">
+                    <h4>📚 Documentación</h4>
+                    <p>Accede a la documentación técnica completa:</p>
+                    <a href="https://github.com/david-cerberus/Cerberus-Gestor" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Cerberus Gestor de Contraseñas. Todos los derechos reservados.</p>
+        <p>
+            <a href="https://sites.google.com/view/cerberus-gestor-contrasenas" target="_blank" rel="noopener noreferrer">Política de Privacidad</a> | 
+            <a href="#soporte">Soporte</a>
+        </p>
+        <p style="font-size: 0.9rem; margin-top: 1rem; opacity: 0.7;">
+            Cerberus es una aplicación local-first, offline-first sin publicidad ni rastreadores.
+        </p>
+    </footer>
+</body>
+</html>
