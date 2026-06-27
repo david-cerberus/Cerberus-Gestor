@@ -104,6 +104,13 @@
             opacity: 0.95;
         }
 
+        .updated {
+            margin-top: 0.45rem;
+            margin-bottom: 0.25rem;
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
         .lang-switcher {
             display: flex;
             justify-content: center;
@@ -249,6 +256,7 @@
 
     <section class="hero">
         <h1 id="page-title">Política de Privacidad</h1>
+        <p id="page-updated" class="updated">Última actualización: 27 Junio 2026</p>
         <p id="page-intro">Información transparente sobre cómo Cerberus Gestor de Contraseñas protege tus datos, tus permisos y tu privacidad.</p>
         <div class="lang-switcher" aria-label="Selector de idioma">
             <button class="active" data-lang="es">Español</button>
@@ -316,6 +324,7 @@
         const translations = {
             es: {
                 title: 'Política de Privacidad',
+                updated: 'Última actualización: 27 Junio 2026',
                 intro: 'Información transparente sobre cómo Cerberus Gestor de Contraseñas protege tus datos, tus permisos y tu privacidad.',
                 introText: '<p><strong>Esta Política de Privacidad describe cómo Cerberus Gestor de Contraseñas (en adelante, "la Aplicación") trata la información y los datos de los usuarios.</strong> Cerberus es un gestor de contraseñas de alta seguridad diseñado bajo la filosofía "local-first" (prioridad local).</p>',
                 section1Title: '1. Recopilación y Uso de Datos (Almacenamiento Local-First)',
@@ -337,6 +346,7 @@
             },
             en: {
                 title: 'Privacy Policy',
+                updated: 'Last updated: 27 June 2026',
                 intro: 'Transparent information about how Cerberus Password Manager protects your data, permissions, and privacy.',
                 introText: '<p><strong>This Privacy Policy describes how Cerberus Password Manager (hereinafter, "the Application") handles user information and data.</strong> Cerberus is a high-security password manager designed under a "local-first" philosophy.</p>',
                 section1Title: '1. Data Collection and Use (Local-First Storage)',
@@ -358,6 +368,7 @@
             },
             de: {
                 title: 'Datenschutzerklärung',
+                updated: 'Letzte Aktualisierung: 27. Juni 2026',
                 intro: 'Transparente Informationen darüber, wie Cerberus Passwort-Manager Ihre Daten, Berechtigungen und Ihre Privatsphäre schützt.',
                 introText: '<p><strong>Diese Datenschutzerklärung beschreibt, wie Cerberus Passwort-Manager (im Folgenden „die App") mit Nutzerinformationen und -daten umgeht.</strong> Cerberus ist ein hochsicherer Passwort-Manager, der nach dem Prinzip „Local-First" (lokale Priorität) entwickelt wurde.</p>',
                 section1Title: '1. Datenerfassung und -nutzung (lokale Speicherung mit Priorität)',
@@ -379,6 +390,7 @@
             },
             fr: {
                 title: 'Politique de Confidentialité',
+                updated: 'Dernière mise à jour : 27 juin 2026',
                 intro: 'Informations transparentes sur la manière dont Cerberus Gestion Mots de Passe protège vos données, permissions et confidentialité.',
                 introText: '<p><strong>Cette politique de confidentialité décrit la manière dont Cerberus Gestion Mots de Passe (ci-après, « l\'Application ») traite les informations et les données des utilisateurs.</strong> Cerberus est un gestionnaire de mots de passe hautement sécurisé, conçu selon la philosophie « local-first » (priorité au local).</p>',
                 section1Title: '1. Collecte et utilisation des données (stockage local en priorité)',
@@ -400,6 +412,7 @@
             },
             pt: {
                 title: 'Política de Privacidade',
+                updated: 'Última atualização: 27 de junho de 2026',
                 intro: 'Informações transparentes sobre como o Cerberus Gerenciador de Senhas protege seus dados, permissões e privacidade.',
                 introText: '<p><strong>Esta Política de Privacidade descreve como o Cerberus Gerenciador de Senhas (a seguir, "o Aplicativo") trata as informações e os dados dos usuários.</strong> O Cerberus é um gerenciador de senhas de alta segurança, desenvolvido sob a filosofia "local-first" (prioridade local).</p>',
                 section1Title: '1. Coleta e Uso de Dados (Armazenamento Local-First)',
@@ -421,6 +434,7 @@
             },
             it: {
                 title: 'Informativa sulla Privacy',
+                updated: 'Ultimo aggiornamento: 27 giugno 2026',
                 intro: 'Informazioni trasparenti su come Cerberus Gestore Password protegge i tuoi dati, i permessi e la tua privacy.',
                 introText: '<p><strong>La presente Informativa sulla Privacy descrive le modalità con cui Cerberus Gestore Password (di seguito, "l\'Applicazione") tratta le informazioni e i dati degli utenti.</strong> Cerberus è un gestore di password ad alta sicurezza, progettato secondo la filosofia "local-first" (priorità locale).</p>',
                 section1Title: '1. Raccolta e Utilizzo dei Dati (Archiviazione Local-First)',
@@ -442,6 +456,7 @@
             },
             pl: {
                 title: 'Polityka Prywatności',
+                updated: 'Ostatnia aktualizacja: 27 czerwca 2026 r.',
                 intro: 'Przejrzyste informacje o tym, jak Cerberus Menedżer Haseł chroni Twoje dane, uprawnienia i prywatność.',
                 introText: '<p><strong>Niniejsza Polityka Prywatności opisuje, w jaki sposób Cerberus Menedżer Haseł (dalej: „Aplikacja") przetwarza informacje i dane użytkowników.</strong> Cerberus to menedżer haseł o wysokim poziomie bezpieczeństwa, zaprojektowany zgodnie z filozofią „local-first" (priorytet danych lokalnych).</p>',
                 section1Title: '1. Gromadzenie i wykorzystywanie danych (przechowywanie lokalne w pierwszej kolejności)',
@@ -465,6 +480,7 @@
 
         const buttons = document.querySelectorAll('.lang-switcher button');
         const titleEl = document.getElementById('page-title');
+        const updatedEl = document.getElementById('page-updated');
         const introEl = document.getElementById('page-intro');
         const introTextEl = document.getElementById('intro-text');
         const section1TitleEl = document.getElementById('section-1-title');
@@ -487,6 +503,7 @@
         function setLanguage(lang) {
             const content = translations[lang] || translations.es;
             titleEl.textContent = content.title;
+            updatedEl.textContent = content.updated;
             introEl.textContent = content.intro;
             introTextEl.innerHTML = content.introText;
             section1TitleEl.textContent = content.section1Title;
