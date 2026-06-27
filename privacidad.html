@@ -104,6 +104,32 @@
             opacity: 0.95;
         }
 
+        .lang-switcher {
+            display: flex;
+            justify-content: center;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .lang-switcher button {
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.25);
+            color: white;
+            padding: 0.45rem 0.8rem;
+            border-radius: 999px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+
+        .lang-switcher button:hover,
+        .lang-switcher button.active {
+            background: var(--cyan);
+            color: var(--navy);
+            transform: translateY(-1px);
+        }
+
         main {
             max-width: 1100px;
             margin: 0 auto;
@@ -222,23 +248,32 @@
     </header>
 
     <section class="hero">
-        <h1>Política de Privacidad</h1>
-        <p>Información transparente sobre cómo Cerberus Gestor de Contraseñas protege tus datos, tus permisos y tu privacidad.</p>
+        <h1 id="page-title">Política de Privacidad</h1>
+        <p id="page-intro">Información transparente sobre cómo Cerberus Gestor de Contraseñas protege tus datos, tus permisos y tu privacidad.</p>
+        <div class="lang-switcher" aria-label="Selector de idioma">
+            <button class="active" data-lang="es">Español</button>
+            <button data-lang="en">English</button>
+            <button data-lang="de">Deutsch</button>
+            <button data-lang="fr">Français</button>
+            <button data-lang="pt">Português</button>
+            <button data-lang="it">Italiano</button>
+            <button data-lang="pl">Polski</button>
+        </div>
     </section>
 
     <main>
         <article>
-            <div class="intro">
+            <div class="intro" id="intro-text">
                 <p><strong>Esta Política de Privacidad describe cómo Cerberus Gestor de Contraseñas (en adelante, "la Aplicación") trata la información y los datos de los usuarios.</strong> Cerberus es un gestor de contraseñas de alta seguridad diseñado bajo la filosofía "local-first" (prioridad local).</p>
             </div>
 
-            <h2>1. Recopilación y Uso de Datos (Almacenamiento Local-First)</h2>
-            <p>Cerberus no recopila, no almacena, no monitoriza ni comparte ningún tipo de información personal, credencial, contraseña o dato de navegación en servidores externos de nuestra propiedad.</p>
-            <p>Toda la información que introduces en la Aplicación (nombres de usuario, contraseñas, URLs, notas y categorías) se almacena exclusivamente en el almacenamiento interno de tu dispositivo móvil dentro de una base de datos local fuertemente encriptada de extremo a extremo mediante el protocolo AES-256 (SQLCipher). El descifrado de estos datos se realiza estrictamente en tiempo de ejecución en tu hardware y bajo la validación de tu clave maestra o credenciales biométricas del sistema operativo.</p>
+            <h2 id="section-1-title">1. Recopilación y Uso de Datos (Almacenamiento Local-First)</h2>
+            <p id="section-1-p1">Cerberus no recopila, no almacena, no monitoriza ni comparte ningún tipo de información personal, credencial, contraseña o dato de navegación en servidores externos de nuestra propiedad.</p>
+            <p id="section-1-p2">Toda la información que introduces en la Aplicación (nombres de usuario, contraseñas, URLs, notas y categorías) se almacena exclusivamente en el almacenamiento interno de tu dispositivo móvil dentro de una base de datos local fuertemente encriptada de extremo a extremo mediante el protocolo AES-256 (SQLCipher). El descifrado de estos datos se realiza estrictamente en tiempo de ejecución en tu hardware y bajo la validación de tu clave maestra o credenciales biométricas del sistema operativo.</p>
 
-            <h2>2. Permisos de la Aplicación y Terceros</h2>
-            <p>Para ofrecer sus funciones de seguridad avanzadas, la Aplicación requiere los siguientes permisos nativos, los cuales se ejecutan de forma 100% aislada:</p>
-            <ul>
+            <h2 id="section-2-title">2. Permisos de la Aplicación y Terceros</h2>
+            <p id="section-2-p1">Para ofrecer sus funciones de seguridad avanzadas, la Aplicación requiere los siguientes permisos nativos, los cuales se ejecutan de forma 100% aislada:</p>
+            <ul id="section-2-list">
                 <li><strong>Autenticación Biométrica ("local_auth"):</strong> Utilizada exclusivamente para validar la identidad del usuario en el dispositivo (huella dactilar o reconocimiento facial) para desbloquear el llavero local. Nosotros no tenemos acceso a tus datos biométricos, los cuales son gestionados de forma segura por el hardware de tu sistema operativo.</li>
                 <li><strong>Acceso a Internet:</strong> Requerido únicamente para dos funciones específicas solicitadas explícitamente por el usuario:
                     <ul>
@@ -249,24 +284,24 @@
                 <li><strong>Validación de Compras Integradas (In-App Purchases):</strong> El acceso a la red es estrictamente necesario para conectar de forma segura y anónima con los servicios oficiales de facturación de la tienda de aplicaciones (Google Play Billing API). Este proceso se realiza de forma local desde el dispositivo para verificar el estado de los pagos o activar las funciones Premium adquiridas por el usuario, sin recolectar ni almacenar datos bancarios en servidores del desarrollador.</li>
             </ul>
 
-            <h2>3. Sincronización y Copias de Seguridad (Google Drive API)</h2>
-            <p>La Aplicación ofrece una función opcional de copia de seguridad en la nube utilizando la API oficial de Google Drive:</p>
-            <ul>
+            <h2 id="section-3-title">3. Sincronización y Copias de Seguridad (Google Drive API)</h2>
+            <p id="section-3-p1">La Aplicación ofrece una función opcional de copia de seguridad en la nube utilizando la API oficial de Google Drive:</p>
+            <ul id="section-3-list">
                 <li><strong>Uso del alcance restringido (appDataFolder):</strong> Cerberus interactúa única y exclusivamente con el directorio especial restringido de datos de configuración de aplicaciones de Google Drive (drive.appdata). La Aplicación no solicita, no recopila, ni tiene acceso a ningún otro archivo, documento, foto o carpeta personal almacenada en la cuenta de Google Drive del usuario.</li>
                 <li><strong>Sincronización Eficiente y Automatizada:</strong> Una vez que el usuario activa e inicia sesión por primera vez en esta función, la Aplicación automatiza el respaldo subiendo de forma segura el archivo cifrado a Google Drive cada vez que se detecta un cambio o actualización en el llavero local. Asimismo, el usuario mantiene la capacidad de forzar una subida o descarga de forma manual en cualquier momento desde los ajustes.</li>
                 <li><strong>Seguridad y Cifrado de Vanguardia:</strong> Toda la información que se exporta o respalda fuera de la bóveda local se procesa bajo los más estrictos estándares de seguridad informática. En el caso de las copias de seguridad opcionales en la nube (Google Drive), la Aplicación transfiere el archivo de base de datos protegido mediante el cifrado nativo de SQLCipher (AES-256 y PBKDF2 con 600.000 iteraciones). Para las exportaciones manuales a archivos locales (como el formato .cjson), se aplica un blindaje independiente utilizando el protocolo AES-256-GCM y derivación de clave mediante Argon2id. En ningún escenario el desarrollador de Cerberus cuenta con servidores intermedios, canales de interceptación ni capacidad técnica para acceder, leer o descifrar tus datos.</li>
                 <li>El uso que Cerberus hace de la información obtenida mediante las API de Google se ajusta a la Política de Datos de Usuario de los Servicios de API de Google, incluidos los requisitos de Uso Limitado (Google API Services User Data Policy).</li>
             </ul>
 
-            <h2>4. Seguridad de los Datos</h2>
-            <p>Para blindar tu privacidad visual y evitar fugas pasivas de información, la Aplicación implementa el flag de seguridad nativo del sistema operativo (<strong>FLAG_SECURE</strong>). Esto prohíbe de forma estricta las capturas y grabaciones de pantalla dentro de la app, y oculta completamente el contenido de la interfaz en el menú de aplicaciones recientes (multitarea) de tu dispositivo. Asimismo, se ha deshabilitado el respaldo automático del sistema Android (allowBackup="false") para evitar copias descontroladas por parte del sistema operativo.</p>
+            <h2 id="section-4-title">4. Seguridad de los Datos</h2>
+            <p id="section-4-p1">Para blindar tu privacidad visual y evitar fugas pasivas de información, la Aplicación implementa el flag de seguridad nativo del sistema operativo (<strong>FLAG_SECURE</strong>). Esto prohíbe de forma estricta las capturas y grabaciones de pantalla dentro de la app, y oculta completamente el contenido de la interfaz en el menú de aplicaciones recientes (multitarea) de tu dispositivo. Asimismo, se ha deshabilitado el respaldo automático del sistema Android (allowBackup="false") para evitar copias descontroladas por parte del sistema operativo.</p>
 
-            <h2>5. Cambios en esta Política de Privacidad</h2>
-            <p>Nos reservamos el derecho de actualizar esta Política de Privacidad en futuras versiones de la Aplicación para reflejar mejoras o cambios técnicos. Cualquier cambio sustancial se notificará de forma transparente dentro de la propia interfaz de Cerberus.</p>
+            <h2 id="section-5-title">5. Cambios en esta Política de Privacidad</h2>
+            <p id="section-5-p1">Nos reservamos el derecho de actualizar esta Política de Privacidad en futuras versiones de la Aplicación para reflejar mejoras o cambios técnicos. Cualquier cambio sustancial se notificará de forma transparente dentro de la propia interfaz de Cerberus.</p>
 
-            <h2>6. Contacto</h2>
-            <p>Si tienes dudas o preguntas sobre el funcionamiento local y la privacidad de Cerberus, puedes ponerte en contacto a través de:</p>
-            <div class="contact">
+            <h2 id="section-6-title">6. Contacto</h2>
+            <p id="section-6-p1">Si tienes dudas o preguntas sobre el funcionamiento local y la privacidad de Cerberus, puedes ponerte en contacto a través de:</p>
+            <div class="contact" id="contact-box">
                 <a href="mailto:cerberus.keypass@gmail.com">cerberus.keypass@gmail.com</a>
             </div>
         </article>
@@ -276,5 +311,209 @@
         <p>Cerberus Gestor de Contraseñas</p>
         <p><a href="index.html">Volver a la landing page</a></p>
     </footer>
+
+    <script>
+        const translations = {
+            es: {
+                title: 'Política de Privacidad',
+                intro: 'Información transparente sobre cómo Cerberus Gestor de Contraseñas protege tus datos, tus permisos y tu privacidad.',
+                introText: '<p><strong>Esta Política de Privacidad describe cómo Cerberus Gestor de Contraseñas (en adelante, "la Aplicación") trata la información y los datos de los usuarios.</strong> Cerberus es un gestor de contraseñas de alta seguridad diseñado bajo la filosofía "local-first" (prioridad local).</p>',
+                section1Title: '1. Recopilación y Uso de Datos (Almacenamiento Local-First)',
+                section1P1: 'Cerberus no recopila, no almacena, no monitoriza ni comparte ningún tipo de información personal, credencial, contraseña o dato de navegación en servidores externos de nuestra propiedad.',
+                section1P2: 'Toda la información que introduces en la Aplicación (nombres de usuario, contraseñas, URLs, notas y categorías) se almacena exclusivamente en el almacenamiento interno de tu dispositivo móvil dentro de una base de datos local fuertemente encriptada de extremo a extremo mediante el protocolo AES-256 (SQLCipher). El descifrado de estos datos se realiza estrictamente en tiempo de ejecución en tu hardware y bajo la validación de tu clave maestra o credenciales biométricas del sistema operativo.',
+                section2Title: '2. Permisos de la Aplicación y Terceros',
+                section2P1: 'Para ofrecer sus funciones de seguridad avanzadas, la Aplicación requiere los siguientes permisos nativos, los cuales se ejecutan de forma 100% aislada:',
+                section2List: '<li><strong>Autenticación Biométrica ("local_auth"):</strong> Utilizada exclusivamente para validar la identidad del usuario en el dispositivo (huella dactilar o reconocimiento facial) para desbloquear el llavero local. Nosotros no tenemos acceso a tus datos biométricos, los cuales son gestionados de forma segura por el hardware de tu sistema operativo.</li><li><strong>Acceso a Internet:</strong> Requerido únicamente para dos funciones específicas solicitadas explícitamente por el usuario:<ul><li>Descarga e inserción en caché local de los logotipos de los servicios web (Favicons) de forma directa desde el dominio oficial del servicio, sin intermediarios ni registros de telemetría.</li><li>El flujo de copia de seguridad opcional.</li></ul></li><li><strong>Validación de Compras Integradas (In-App Purchases):</strong> El acceso a la red es estrictamente necesario para conectar de forma segura y anónima con los servicios oficiales de facturación de la tienda de aplicaciones (Google Play Billing API). Este proceso se realiza de forma local desde el dispositivo para verificar el estado de los pagos o activar las funciones Premium adquiridas por el usuario, sin recolectar ni almacenar datos bancarios en servidores del desarrollador.</li>',
+                section3Title: '3. Sincronización y Copias de Seguridad (Google Drive API)',
+                section3P1: 'La Aplicación ofrece una función opcional de copia de seguridad en la nube utilizando la API oficial de Google Drive:',
+                section3List: '<li><strong>Uso del alcance restringido (appDataFolder):</strong> Cerberus interactúa única y exclusivamente con el directorio especial restringido de datos de configuración de aplicaciones de Google Drive (drive.appdata). La Aplicación no solicita, no recopila, ni tiene acceso a ningún otro archivo, documento, foto o carpeta personal almacenada en la cuenta de Google Drive del usuario.</li><li><strong>Sincronización Eficiente y Automatizada:</strong> Una vez que el usuario activa e inicia sesión por primera vez en esta función, la Aplicación automatiza el respaldo subiendo de forma segura el archivo cifrado a Google Drive cada vez que se detecta un cambio o actualización en el llavero local. Asimismo, el usuario mantiene la capacidad de forzar una subida o descarga de forma manual en cualquier momento desde los ajustes.</li><li><strong>Seguridad y Cifrado de Vanguardia:</strong> Toda la información que se exporta o respalda fuera de la bóveda local se procesa bajo los más estrictos estándares de seguridad informática. En el caso de las copias de seguridad opcionales en la nube (Google Drive), la Aplicación transfiere el archivo de base de datos protegido mediante el cifrado nativo de SQLCipher (AES-256 y PBKDF2 con 600.000 iteraciones). Para las exportaciones manuales a archivos locales (como el formato .cjson), se aplica un blindaje independiente utilizando el protocolo AES-256-GCM y derivación de clave mediante Argon2id. En ningún escenario el desarrollador de Cerberus cuenta con servidores intermedios, canales de interceptación ni capacidad técnica para acceder, leer o descifrar tus datos.</li><li>El uso que Cerberus hace de la información obtenida mediante las API de Google se ajusta a la Política de Datos de Usuario de los Servicios de API de Google, incluidos los requisitos de Uso Limitado (Google API Services User Data Policy).</li>',
+                section4Title: '4. Seguridad de los Datos',
+                section4P1: 'Para blindar tu privacidad visual y evitar fugas pasivas de información, la Aplicación implementa el flag de seguridad nativo del sistema operativo (<strong>FLAG_SECURE</strong>). Esto prohíbe de forma estricta las capturas y grabaciones de pantalla dentro de la app, y oculta completamente el contenido de la interfaz en el menú de aplicaciones recientes (multitarea) de tu dispositivo. Asimismo, se ha deshabilitado el respaldo automático del sistema Android (allowBackup="false") para evitar copias descontroladas por parte del sistema operativo.',
+                section5Title: '5. Cambios en esta Política de Privacidad',
+                section5P1: 'Nos reservamos el derecho de actualizar esta Política de Privacidad en futuras versiones de la Aplicación para reflejar mejoras o cambios técnicos. Cualquier cambio sustancial se notificará de forma transparente dentro de la propia interfaz de Cerberus.',
+                section6Title: '6. Contacto',
+                section6P1: 'Si tienes dudas o preguntas sobre el funcionamiento local y la privacidad de Cerberus, puedes ponerte en contacto a través de:',
+                contactText: '<a href="mailto:cerberus.keypass@gmail.com">cerberus.keypass@gmail.com</a>'
+            },
+            en: {
+                title: 'Privacy Policy',
+                intro: 'Transparent information about how Cerberus Password Manager protects your data, permissions, and privacy.',
+                introText: '<p><strong>This Privacy Policy describes how Cerberus Password Manager (hereinafter, "the Application") handles user information and data.</strong> Cerberus is a high-security password manager designed under a "local-first" philosophy.</p>',
+                section1Title: '1. Data Collection and Use (Local-First Storage)',
+                section1P1: 'Cerberus does not collect, store, monitor, or share any personal information, credentials, passwords, or browsing data on external servers owned by us.',
+                section1P2: 'All information you enter into the Application (usernames, passwords, URLs, notes, and categories) is stored exclusively in your mobile device\'s internal storage, within a local database strongly encrypted end-to-end using the AES-256 protocol (SQLCipher). Decryption of this data takes place strictly at runtime on your own hardware, and only after validating your Master Password or your operating system\'s biometric credentials.',
+                section2Title: '2. App Permissions and Third Parties',
+                section2P1: 'To provide its advanced security features, the Application requires the following native permissions, each of which runs in a fully isolated manner:',
+                section2List: '<li><strong>Biometric Authentication ("local_auth"):</strong> Used exclusively to verify the user\'s identity on the device (fingerprint or facial recognition) in order to unlock the local vault. We have no access to your biometric data, which is securely managed by your operating system\'s hardware.</li><li><strong>Internet Access:</strong> Required only for two specific functions explicitly requested by the user:<ul><li>Downloading and locally caching website logos (favicons) directly from the service\'s official domain, with no intermediaries or telemetry logging.</li><li>The optional backup flow.</li></ul></li><li><strong>In-App Purchase Validation:</strong> Network access is strictly necessary to securely and anonymously connect to the app store\'s official billing services (Google Play Billing API). This process is carried out locally on the device to verify payment status or activate purchased Premium features, without collecting or storing any banking data on the developer\'s servers.</li>',
+                section3Title: '3. Synchronization and Backups (Google Drive API)',
+                section3P1: 'The Application offers an optional cloud backup feature using the official Google Drive API:',
+                section3List: '<li><strong>Use of a restricted scope (appDataFolder):</strong> Cerberus interacts solely and exclusively with Google Drive\'s restricted application data folder (drive.appdata). The Application does not request, collect, or have access to any other file, document, photo, or personal folder stored in the user\'s Google Drive account.</li><li><strong>Efficient, Automated Synchronization:</strong> Once the user enables and signs in to this feature for the first time, the Application automates backups by securely uploading the encrypted file to Google Drive whenever a change or update is detected in the local vault. The user can also manually force an upload or download at any time from the settings menu.</li><li><strong>State-of-the-Art Security and Encryption:</strong> All information exported or backed up outside the local vault is processed under the strictest information security standards. For optional cloud backups (Google Drive), the Application transfers the database file protected using SQLCipher\'s native encryption (AES-256 and PBKDF2 with 600,000 iterations). For manual exports to local files (such as the .cjson format), an independent layer of protection is applied using the AES-256-GCM protocol with key derivation via Argon2id. Under no circumstances does Cerberus\'s developer have intermediary servers, interception channels, or the technical capability to access, read, or decrypt your data.</li><li>Cerberus\'s use of information received from Google APIs adheres to the Google API Services User Data Policy, including the Limited Use requirements.</li>',
+                section4Title: '4. Data Security',
+                section4P1: 'To protect your visual privacy and prevent passive information leaks, the Application implements the operating system\'s native security flag (FLAG_SECURE). This strictly prohibits screenshots and screen recordings within the app, and completely hides the interface content in your device\'s recent apps (multitasking) menu. Additionally, Android\'s automatic system backup has been disabled (allowBackup="false") to prevent uncontrolled backups by the operating system.',
+                section5Title: '5. Changes to this Privacy Policy',
+                section5P1: 'We reserve the right to update this Privacy Policy in future versions of the Application to reflect technical improvements or changes. Any substantial change will be communicated transparently within the Cerberus interface itself.',
+                section6Title: '6. Contact',
+                section6P1: 'If you have questions about Cerberus\'s local operation and privacy practices, you can contact us at:',
+                contactText: '<a href="mailto:cerberus.keypass@gmail.com">cerberus.keypass@gmail.com</a>'
+            },
+            de: {
+                title: 'Datenschutzerklärung',
+                intro: 'Transparente Informationen darüber, wie Cerberus Passwort-Manager Ihre Daten, Berechtigungen und Ihre Privatsphäre schützt.',
+                introText: '<p><strong>Diese Datenschutzerklärung beschreibt, wie Cerberus Passwort-Manager (im Folgenden „die App") mit Nutzerinformationen und -daten umgeht.</strong> Cerberus ist ein hochsicherer Passwort-Manager, der nach dem Prinzip „Local-First" (lokale Priorität) entwickelt wurde.</p>',
+                section1Title: '1. Datenerfassung und -nutzung (lokale Speicherung mit Priorität)',
+                section1P1: 'Cerberus erfasst, speichert, überwacht oder teilt keine personenbezogenen Daten, Zugangsdaten, Passwörter oder Navigationsdaten auf externen Servern, die uns gehören.',
+                section1P2: 'Alle Informationen, die Sie in der App eingeben (Benutzernamen, Passwörter, URLs, Notizen und Kategorien), werden ausschließlich im internen Speicher Ihres Mobilgeräts gespeichert, in einer lokalen Datenbank, die mittels des AES-256-Protokolls (SQLCipher) durchgehend stark verschlüsselt ist. Die Entschlüsselung dieser Daten erfolgt strikt zur Laufzeit auf Ihrer eigenen Hardware und nur nach Validierung Ihres Master-Passworts oder der biometrischen Anmeldedaten Ihres Betriebssystems.',
+                section2Title: '2. App-Berechtigungen und Drittanbieter',
+                section2P1: 'Um ihre erweiterten Sicherheitsfunktionen anbieten zu können, benötigt die App folgende native Berechtigungen, die jeweils vollständig isoliert ausgeführt werden:',
+                section2List: '<li><strong>Biometrische Authentifizierung („local_auth"):</strong> Wird ausschließlich zur Identitätsprüfung auf dem Gerät (Fingerabdruck oder Gesichtserkennung) verwendet, um den lokalen Tresor zu entsperren. Wir haben keinen Zugriff auf Ihre biometrischen Daten, die sicher von der Hardware Ihres Betriebssystems verwaltet werden.</li><li><strong>Internetzugriff:</strong> Wird ausschließlich für zwei vom Nutzer ausdrücklich angeforderte Funktionen benötigt:<ul><li>Herunterladen und lokales Zwischenspeichern der Logos von Webdiensten (Favicons), direkt von der offiziellen Domain des jeweiligen Dienstes, ohne Zwischeninstanzen oder Telemetrie-Protokollierung.</li><li>Den optionalen Backup-Vorgang.</li></ul></li><li><strong>Überprüfung von In-App-Käufen:</strong> Der Netzwerkzugriff ist unbedingt erforderlich, um sicher und anonym eine Verbindung zu den offiziellen Abrechnungsdiensten des App-Stores (Google Play Billing API) herzustellen. Dieser Vorgang erfolgt lokal auf dem Gerät, um den Zahlungsstatus zu überprüfen oder erworbene Premium-Funktionen zu aktivieren, ohne dass Bankdaten auf Servern des Entwicklers erfasst oder gespeichert werden.</li>',
+                section3Title: '3. Synchronisierung und Backups (Google Drive API)',
+                section3P1: 'Die App bietet eine optionale Cloud-Backup-Funktion über die offizielle Google Drive API:',
+                section3List: '<li><strong>Verwendung eines eingeschränkten Bereichs (appDataFolder):</strong> Cerberus greift ausschließlich auf den speziellen, eingeschränkten App-Datenordner von Google Drive (drive.appdata) zu. Die App fordert keinen Zugriff auf andere Dateien, Dokumente, Fotos oder persönliche Ordner im Google-Drive-Konto des Nutzers an und hat darauf auch keinen Zugriff.</li><li><strong>Effiziente, automatisierte Synchronisierung:</strong> Sobald der Nutzer diese Funktion aktiviert und sich erstmals dafür anmeldet, automatisiert die App das Backup, indem die verschlüsselte Datei sicher zu Google Drive hochgeladen wird, sobald eine Änderung oder Aktualisierung im lokalen Tresor erkannt wird. Der Nutzer kann zudem jederzeit über die Einstellungen einen manuellen Upload oder Download erzwingen.</li><li><strong>Modernste Sicherheit und Verschlüsselung:</strong> Alle Informationen, die außerhalb des lokalen Tresors exportiert oder gesichert werden, werden nach strengsten Standards der Informationssicherheit verarbeitet. Bei optionalen Cloud-Backups (Google Drive) übermittelt die App die Datenbankdatei geschützt durch die native Verschlüsselung von SQLCipher (AES-256 und PBKDF2 mit 600.000 Iterationen). Für manuelle Exporte in lokale Dateien (z. B. im .cjson-Format) wird ein zusätzlicher, unabhängiger Schutz mittels des AES-256-GCM-Protokolls und Schlüsselableitung über Argon2id angewendet. Unter keinen Umständen verfügt der Entwickler von Cerberus über Zwischenserver, Abhörkanäle oder die technische Möglichkeit, auf Ihre Daten zuzugreifen, sie zu lesen oder zu entschlüsseln.</li><li>Die Nutzung der von den Google-APIs erhaltenen Informationen durch Cerberus entspricht der Google API Services User Data Policy, einschließlich der Limited-Use-Anforderungen.</li>',
+                section4Title: '4. Datensicherheit',
+                section4P1: 'Um Ihre visuelle Privatsphäre zu schützen und passive Datenlecks zu verhindern, implementiert die App das native Sicherheits-Flag des Betriebssystems (FLAG_SECURE). Dieses verhindert strikt Screenshots und Bildschirmaufnahmen innerhalb der App und blendet den Inhalt der Benutzeroberfläche im Menü der zuletzt verwendeten Apps (Multitasking) Ihres Geräts vollständig aus. Zudem wurde das automatische System-Backup von Android deaktiviert (allowBackup="false"), um unkontrollierte Backups durch das Betriebssystem zu verhindern.',
+                section5Title: '5. Änderungen dieser Datenschutzerklärung',
+                section5P1: 'Wir behalten uns das Recht vor, diese Datenschutzerklärung in zukünftigen Versionen der App zu aktualisieren, um technische Verbesserungen oder Änderungen widerzuspiegeln. Jede wesentliche Änderung wird transparent innerhalb der Cerberus-Oberfläche selbst mitgeteilt.',
+                section6Title: '6. Kontakt',
+                section6P1: 'Wenn Sie Fragen zur lokalen Funktionsweise und zum Datenschutz von Cerberus haben, können Sie uns kontaktieren unter:',
+                contactText: '<a href="mailto:cerberus.keypass@gmail.com">cerberus.keypass@gmail.com</a>'
+            },
+            fr: {
+                title: 'Politique de Confidentialité',
+                intro: 'Informations transparentes sur la manière dont Cerberus Gestion Mots de Passe protège vos données, permissions et confidentialité.',
+                introText: '<p><strong>Cette politique de confidentialité décrit la manière dont Cerberus Gestion Mots de Passe (ci-après, « l\'Application ») traite les informations et les données des utilisateurs.</strong> Cerberus est un gestionnaire de mots de passe hautement sécurisé, conçu selon la philosophie « local-first » (priorité au local).</p>',
+                section1Title: '1. Collecte et utilisation des données (stockage local en priorité)',
+                section1P1: 'Cerberus ne collecte, ne stocke, ne surveille et ne partage aucune information personnelle, identifiant, mot de passe ou donnée de navigation sur des serveurs externes nous appartenant.',
+                section1P2: 'Toutes les informations que vous saisissez dans l\'Application (noms d\'utilisateur, mots de passe, URL, notes et catégories) sont stockées exclusivement dans la mémoire interne de votre appareil mobile, au sein d\'une base de données locale fortement chiffrée de bout en bout grâce au protocole AES-256 (SQLCipher). Le déchiffrement de ces données s\'effectue strictement en temps réel sur votre propre matériel, et uniquement après validation de votre Mot de Passe Maître ou de vos identifiants biométriques du système d\'exploitation.',
+                section2Title: '2. Autorisations de l\'application et tiers',
+                section2P1: 'Pour proposer ses fonctionnalités de sécurité avancées, l\'Application requiert les autorisations natives suivantes, chacune s\'exécutant de manière totalement isolée :',
+                section2List: '<li><strong>Authentification biométrique (« local_auth ») :</strong> utilisée exclusivement pour valider l\'identité de l\'utilisateur sur l\'appareil (empreinte digitale ou reconnaissance faciale) afin de déverrouiller le coffre-fort local. Nous n\'avons aucun accès à vos données biométriques, gérées de manière sécurisée par le matériel de votre système d\'exploitation.</li><li><strong>Accès à Internet :</strong> requis uniquement pour deux fonctions spécifiques explicitement demandées par l\'utilisateur :<ul><li>Le téléchargement et la mise en cache locale des logos des services web (favicons), directement depuis le domaine officiel du service concerné, sans intermédiaire ni enregistrement de télémétrie.</li><li>Le processus de sauvegarde optionnel.</li></ul></li><li><strong>Validation des achats intégrés :</strong> l\'accès au réseau est strictement nécessaire pour se connecter de manière sécurisée et anonyme aux services de facturation officiels de la boutique d\'applications (Google Play Billing API). Ce processus s\'effectue localement depuis l\'appareil pour vérifier l\'état des paiements ou activer les fonctionnalités Premium achetées par l\'utilisateur, sans collecter ni stocker de données bancaires sur les serveurs du développeur.</li>',
+                section3Title: '3. Synchronisation et sauvegardes (API Google Drive)',
+                section3P1: 'L\'Application propose une fonction optionnelle de sauvegarde dans le cloud via l\'API officielle de Google Drive :',
+                section3List: '<li><strong>Utilisation d\'une portée restreinte (appDataFolder) :</strong> Cerberus interagit uniquement et exclusivement avec le dossier spécial restreint de données d\'application de Google Drive (drive.appdata). L\'Application ne demande, ne collecte et n\'a accès à aucun autre fichier, document, photo ou dossier personnel stocké dans le compte Google Drive de l\'utilisateur.</li><li><strong>Synchronisation efficace et automatisée :</strong> une fois que l\'utilisateur active cette fonction et s\'y connecte pour la première fois, l\'Application automatise la sauvegarde en téléchargeant de manière sécurisée le fichier chiffré vers Google Drive chaque fois qu\'un changement ou une mise à jour est détecté dans le coffre-fort local. L\'utilisateur conserve également la possibilité de forcer manuellement un envoi ou un téléchargement à tout moment depuis les paramètres.</li><li><strong>Sécurité et chiffrement de pointe :</strong> toutes les informations exportées ou sauvegardées hors du coffre-fort local sont traitées selon les normes de sécurité informatique les plus strictes. Dans le cas des sauvegardes cloud optionnelles (Google Drive), l\'Application transfère le fichier de base de données protégé par le chiffrement natif de SQLCipher (AES-256 et PBKDF2 avec 600 000 itérations). Pour les exportations manuelles vers des fichiers locaux (comme le format .cjson), une protection indépendante est appliquée à l\'aide du protocole AES-256-GCM et d\'une dérivation de clé via Argon2id. En aucun cas le développeur de Cerberus ne dispose de serveurs intermédiaires, de canaux d\'interception ou de la capacité technique d\'accéder à vos données, de les lire ou de les déchiffrer.</li><li>L\'utilisation par Cerberus des informations obtenues via les API de Google est conforme à la politique relative aux données utilisateur des services API de Google (Google API Services User Data Policy), y compris aux exigences d\'utilisation limitée (Limited Use).</li>',
+                section4Title: '4. Sécurité des données',
+                section4P1: 'Afin de protéger votre confidentialité visuelle et d\'éviter les fuites passives d\'informations, l\'Application met en œuvre l\'indicateur de sécurité natif du système d\'exploitation (FLAG_SECURE). Celui-ci interdit strictement les captures et enregistrements d\'écran au sein de l\'application, et masque entièrement le contenu de l\'interface dans le menu des applications récentes (multitâche) de votre appareil. De plus, la sauvegarde automatique du système Android a été désactivée (allowBackup="false") afin d\'éviter toute sauvegarde incontrôlée par le système d\'exploitation.',
+                section5Title: '5. Modifications de cette politique de confidentialité',
+                section5P1: 'Nous nous réservons le droit de mettre à jour cette politique de confidentialité dans les futures versions de l\'Application afin de refléter des améliorations ou des changements techniques. Tout changement substantiel sera communiqué de manière transparente directement au sein de l\'interface de Cerberus.',
+                section6Title: '6. Contact',
+                section6P1: 'Si vous avez des questions concernant le fonctionnement local et la confidentialité de Cerberus, vous pouvez nous contacter à l\'adresse :',
+                contactText: '<a href="mailto:cerberus.keypass@gmail.com">cerberus.keypass@gmail.com</a>'
+            },
+            pt: {
+                title: 'Política de Privacidade',
+                intro: 'Informações transparentes sobre como o Cerberus Gerenciador de Senhas protege seus dados, permissões e privacidade.',
+                introText: '<p><strong>Esta Política de Privacidade descreve como o Cerberus Gerenciador de Senhas (a seguir, "o Aplicativo") trata as informações e os dados dos usuários.</strong> O Cerberus é um gerenciador de senhas de alta segurança, desenvolvido sob a filosofia "local-first" (prioridade local).</p>',
+                section1Title: '1. Coleta e Uso de Dados (Armazenamento Local-First)',
+                section1P1: 'O Cerberus não coleta, não armazena, não monitora nem compartilha qualquer tipo de informação pessoal, credencial, senha ou dado de navegação em servidores externos de nossa propriedade.',
+                section1P2: 'Todas as informações que você insere no Aplicativo (nomes de usuário, senhas, URLs, notas e categorias) são armazenadas exclusivamente no armazenamento interno do seu dispositivo móvel, em um banco de dados local fortemente criptografado de ponta a ponta por meio do protocolo AES-256 (SQLCipher). A descriptografia desses dados ocorre estritamente em tempo de execução no seu próprio hardware, e somente após a validação da sua Senha Master ou das credenciais biométricas do sistema operacional.',
+                section2Title: '2. Permissões do Aplicativo e Terceiros',
+                section2P1: 'Para oferecer seus recursos avançados de segurança, o Aplicativo requer as seguintes permissões nativas, cada uma executada de forma totalmente isolada:',
+                section2List: '<li><strong>Autenticação Biométrica ("local_auth"):</strong> utilizada exclusivamente para validar a identidade do usuário no dispositivo (impressão digital ou reconhecimento facial) para desbloquear o cofre local. Não temos qualquer acesso aos seus dados biométricos, que são gerenciados de forma segura pelo hardware do seu sistema operacional.</li><li><strong>Acesso à Internet:</strong> necessário apenas para duas funções específicas solicitadas explicitamente pelo usuário:<ul><li>Download e armazenamento em cache local dos logotipos dos serviços web (favicons), diretamente do domínio oficial do serviço, sem intermediários ou registro de telemetria.</li><li>O fluxo de backup opcional.</li></ul></li><li><strong>Validação de Compras no Aplicativo:</strong> o acesso à rede é estritamente necessário para conectar de forma segura e anônima aos serviços oficiais de faturamento da loja de aplicativos (Google Play Billing API). Esse processo é realizado localmente, a partir do dispositivo, para verificar o status dos pagamentos ou ativar os recursos Premium adquiridos pelo usuário, sem coletar nem armazenar dados bancários em servidores do desenvolvedor.</li>',
+                section3Title: '3. Sincronização e Backups (API do Google Drive)',
+                section3P1: 'O Aplicativo oferece uma função opcional de backup na nuvem utilizando a API oficial do Google Drive:',
+                section3List: '<li><strong>Uso de escopo restrito (appDataFolder):</strong> o Cerberus interage única e exclusivamente com a pasta especial e restrita de dados de configuração de aplicativos do Google Drive (drive.appdata). O Aplicativo não solicita, não coleta e não tem acesso a nenhum outro arquivo, documento, foto ou pasta pessoal armazenada na conta do Google Drive do usuário.</li><li><strong>Sincronização Eficiente e Automatizada:</strong> depois que o usuário ativa e faz login nessa função pela primeira vez, o Aplicativo automatiza o backup, enviando de forma segura o arquivo criptografado ao Google Drive sempre que é detectada uma alteração ou atualização no cofre local. O usuário também pode forçar manualmente um envio ou download a qualquer momento, nas configurações.</li><li><strong>Segurança e Criptografia de Ponta:</strong> todas as informações exportadas ou copiadas para fora do cofre local são processadas segundo os mais rigorosos padrões de segurança da informação. No caso dos backups opcionais na nuvem (Google Drive), o Aplicativo transfere o arquivo do banco de dados protegido pela criptografia nativa do SQLCipher (AES-256 e PBKDF2 com 600.000 iterações). Para exportações manuais para arquivos locais (como o formato .cjson), é aplicada uma proteção independente, utilizando o protocolo AES-256-GCM e derivação de chave por meio do Argon2id. Em nenhuma hipótese o desenvolvedor do Cerberus possui servidores intermediários, canais de interceptação ou capacidade técnica para acessar, ler ou descriptografar seus dados.</li><li>O uso que o Cerberus faz das informações obtidas por meio das APIs do Google está em conformidade com a Política de Dados do Usuário dos Serviços de API do Google (Google API Services User Data Policy), incluindo os requisitos de Uso Limitado (Limited Use).</li>',
+                section4Title: '4. Segurança dos Dados',
+                section4P1: 'Para proteger sua privacidade visual e evitar vazamentos passivos de informação, o Aplicativo implementa a flag de segurança nativa do sistema operacional (FLAG_SECURE). Isso proíbe estritamente capturas e gravações de tela dentro do aplicativo, e oculta completamente o conteúdo da interface no menu de aplicativos recentes (multitarefa) do seu dispositivo. Além disso, o backup automático do sistema Android foi desativado (allowBackup="false") para evitar cópias descontroladas por parte do sistema operacional.',
+                section5Title: '5. Alterações nesta Política de Privacidade',
+                section5P1: 'Reservamo-nos o direito de atualizar esta Política de Privacidade em versões futuras do Aplicativo, para refletir melhorias ou mudanças técnicas. Qualquer alteração substancial será comunicada de forma transparente dentro da própria interface do Cerberus.',
+                section6Title: '6. Contato',
+                section6P1: 'Se você tiver dúvidas sobre o funcionamento local e a privacidade do Cerberus, pode entrar em contato pelo e-mail:',
+                contactText: '<a href="mailto:cerberus.keypass@gmail.com">cerberus.keypass@gmail.com</a>'
+            },
+            it: {
+                title: 'Informativa sulla Privacy',
+                intro: 'Informazioni trasparenti su come Cerberus Gestore Password protegge i tuoi dati, i permessi e la tua privacy.',
+                introText: '<p><strong>La presente Informativa sulla Privacy descrive le modalità con cui Cerberus Gestore Password (di seguito, "l\'Applicazione") tratta le informazioni e i dati degli utenti.</strong> Cerberus è un gestore di password ad alta sicurezza, progettato secondo la filosofia "local-first" (priorità locale).</p>',
+                section1Title: '1. Raccolta e Utilizzo dei Dati (Archiviazione Local-First)',
+                section1P1: 'Cerberus non raccoglie, non memorizza, non monitora né condivide alcun tipo di informazione personale, credenziale, password o dato di navigazione su server esterni di nostra proprietà.',
+                section1P2: 'Tutte le informazioni che inserisci nell\'Applicazione (nomi utente, password, URL, note e categorie) vengono archiviate esclusivamente nella memoria interna del tuo dispositivo mobile, all\'interno di un database locale fortemente cifrato end-to-end mediante il protocollo AES-256 (SQLCipher). La decifratura di questi dati avviene esclusivamente in fase di esecuzione sul tuo hardware, e solo dopo la convalida della tua Password Master o delle credenziali biometriche del sistema operativo.',
+                section2Title: '2. Permessi dell\'Applicazione e Terze Parti',
+                section2P1: 'Per offrire le sue funzionalità di sicurezza avanzate, l\'Applicazione richiede i seguenti permessi nativi, ciascuno eseguito in modo completamente isolato:',
+                section2List: '<li><strong>Autenticazione Biometrica ("local_auth"):</strong> utilizzata esclusivamente per verificare l\'identità dell\'utente sul dispositivo (impronta digitale o riconoscimento facciale) al fine di sbloccare il caveau locale. Non abbiamo alcun accesso ai tuoi dati biometrici, gestiti in modo sicuro dall\'hardware del tuo sistema operativo.</li><li><strong>Accesso a Internet:</strong> richiesto unicamente per due funzioni specifiche esplicitamente richieste dall\'utente:<ul><li>Download e memorizzazione in cache locale dei loghi dei servizi web (favicon), direttamente dal dominio ufficiale del servizio, senza intermediari né registrazione di dati di telemetria.</li><li>Il flusso di backup opzionale.</li></ul></li><li><strong>Convalida degli Acquisti In-App:</strong> l\'accesso alla rete è strettamente necessario per connettersi in modo sicuro e anonimo ai servizi di fatturazione ufficiali dello store di applicazioni (Google Play Billing API). Questo processo avviene localmente sul dispositivo per verificare lo stato dei pagamenti o attivare le funzionalità Premium acquistate dall\'utente, senza raccogliere né memorizzare dati bancari sui server dello sviluppatore.</li>',
+                section3Title: '3. Sincronizzazione e Backup (API di Google Drive)',
+                section3P1: 'L\'Applicazione offre una funzione opzionale di backup nel cloud tramite l\'API ufficiale di Google Drive:',
+                section3List: '<li><strong>Utilizzo di un ambito limitato (appDataFolder):</strong> Cerberus interagisce unicamente ed esclusivamente con la cartella speciale e limitata dei dati di configurazione delle applicazioni di Google Drive (drive.appdata). L\'Applicazione non richiede, non raccoglie e non ha accesso ad alcun altro file, documento, foto o cartella personale memorizzata nell\'account Google Drive dell\'utente.</li><li><strong>Sincronizzazione Efficiente e Automatizzata:</strong> una volta che l\'utente attiva ed effettua l\'accesso a questa funzione per la prima volta, l\'Applicazione automatizza il backup caricando in modo sicuro il file cifrato su Google Drive ogni volta che viene rilevata una modifica o un aggiornamento nel caveau locale. L\'utente conserva inoltre la possibilità di forzare manualmente un caricamento o un download in qualsiasi momento dalle impostazioni.</li><li><strong>Sicurezza e Cifratura all\'Avanguardia:</strong> tutte le informazioni esportate o sottoposte a backup all\'esterno del caveau locale vengono elaborate secondo i più rigorosi standard di sicurezza informatica. Nel caso dei backup cloud opzionali (Google Drive), l\'Applicazione trasferisce il file del database protetto tramite la cifratura nativa di SQLCipher (AES-256 e PBKDF2 con 600.000 iterazioni). Per le esportazioni manuali verso file locali (come il formato .cjson), viene applicata una protezione indipendente utilizzando il protocollo AES-256-GCM e la derivazione della chiave tramite Argon2id. In nessun caso lo sviluppatore di Cerberus dispone di server intermedi, canali di intercettazione o della capacità tecnica di accedere, leggere o decifrare i tuoi dati.</li><li>L\'utilizzo che Cerberus fa delle informazioni ottenute tramite le API di Google è conforme alla Google API Services User Data Policy, compresi i requisiti di Limited Use.</li>',
+                section4Title: '4. Sicurezza dei Dati',
+                section4P1: 'Per proteggere la tua privacy visiva ed evitare fughe passive di informazioni, l\'Applicazione implementa il flag di sicurezza nativo del sistema operativo (FLAG_SECURE). Questo vieta rigorosamente gli screenshot e le registrazioni dello schermo all\'interno dell\'app e nasconde completamente il contenuto dell\'interfaccia nel menu delle applicazioni recenti (multitasking) del tuo dispositivo. Inoltre, è stato disabilitato il backup automatico del sistema Android (allowBackup="false") per evitare backup incontrollati da parte del sistema operativo.',
+                section5Title: '5. Modifiche alla presente Informativa sulla Privacy',
+                section5P1: 'Ci riserviamo il diritto di aggiornare la presente Informativa sulla Privacy nelle future versioni dell\'Applicazione, per riflettere miglioramenti o modifiche tecniche. Qualsiasi modifica sostanziale verrà comunicata in modo trasparente all\'interno dell\'interfaccia stessa di Cerberus.',
+                section6Title: '6. Contatti',
+                section6P1: 'Se hai domande sul funzionamento locale e sulla privacy di Cerberus, puoi contattarci all\'indirizzo:',
+                contactText: '<a href="mailto:cerberus.keypass@gmail.com">cerberus.keypass@gmail.com</a>'
+            },
+            pl: {
+                title: 'Polityka Prywatności',
+                intro: 'Przejrzyste informacje o tym, jak Cerberus Menedżer Haseł chroni Twoje dane, uprawnienia i prywatność.',
+                introText: '<p><strong>Niniejsza Polityka Prywatności opisuje, w jaki sposób Cerberus Menedżer Haseł (dalej: „Aplikacja") przetwarza informacje i dane użytkowników.</strong> Cerberus to menedżer haseł o wysokim poziomie bezpieczeństwa, zaprojektowany zgodnie z filozofią „local-first" (priorytet danych lokalnych).</p>',
+                section1Title: '1. Gromadzenie i wykorzystywanie danych (przechowywanie lokalne w pierwszej kolejności)',
+                section1P1: 'Cerberus nie gromadzi, nie przechowuje, nie monitoruje i nie udostępnia żadnych danych osobowych, danych logowania, haseł ani danych dotyczących przeglądania na zewnętrznych serwerach będących naszą własnością.',
+                section1P2: 'Wszystkie informacje wprowadzane przez użytkownika w Aplikacji (nazwy użytkownika, hasła, adresy URL, notatki i kategorie) są przechowywane wyłącznie w pamięci wewnętrznej urządzenia mobilnego, w lokalnej bazie danych silnie zaszyfrowanej end-to-end za pomocą protokołu AES-256 (SQLCipher). Odszyfrowanie tych danych odbywa się wyłącznie w czasie działania aplikacji, na sprzęcie użytkownika, i tylko po zweryfikowaniu Hasła Głównego lub danych biometrycznych systemu operacyjnego.',
+                section2Title: '2. Uprawnienia aplikacji i podmioty zewnętrzne',
+                section2P1: 'Aby zapewnić zaawansowane funkcje bezpieczeństwa, Aplikacja wymaga następujących natywnych uprawnień, z których każde działa w pełni izolowanie:',
+                section2List: '<li><strong>Autoryzacja biometryczna („local_auth"):</strong> używana wyłącznie do weryfikacji tożsamości użytkownika na urządzeniu (odcisk palca lub rozpoznawanie twarzy) w celu odblokowania lokalnego sejfu. Nie mamy żadnego dostępu do danych biometrycznych użytkownika, którymi bezpiecznie zarządza sprzęt systemu operacyjnego.</li><li><strong>Dostęp do internetu:</strong> wymagany wyłącznie dla dwóch konkretnych funkcji, jawnie zażądanych przez użytkownika:<ul><li>Pobieranie i lokalne buforowanie logo usług internetowych (favicon) bezpośrednio z oficjalnej domeny danej usługi, bez pośredników i bez rejestrowania danych telemetrycznych.</li><li>Opcjonalny proces tworzenia kopii zapasowej.</li></ul></li><li><strong>Weryfikacja zakupów w aplikacji:</strong> dostęp do sieci jest absolutnie niezbędny do bezpiecznego i anonimowego połączenia z oficjalnymi usługami rozliczeniowymi sklepu z aplikacjami (Google Play Billing API). Proces ten odbywa się lokalnie, na urządzeniu, w celu zweryfikowania stanu płatności lub aktywacji zakupionych funkcji Premium, bez gromadzenia i przechowywania danych bankowych na serwerach dewelopera.</li>',
+                section3Title: '3. Synchronizacja i kopie zapasowe (API Google Drive)',
+                section3P1: 'Aplikacja udostępnia opcjonalną funkcję tworzenia kopii zapasowych w chmurze przy użyciu oficjalnego interfejsu API Google Drive:',
+                section3List: '<li><strong>Wykorzystanie ograniczonego zakresu uprawnień (appDataFolder):</strong> Cerberus korzysta wyłącznie i jedynie ze specjalnego, ograniczonego folderu danych aplikacji Google Drive (drive.appdata). Aplikacja nie żąda dostępu, nie gromadzi i nie ma dostępu do żadnych innych plików, dokumentów, zdjęć ani osobistych folderów przechowywanych na koncie Google Drive użytkownika.</li><li><strong>Wydajna, automatyczna synchronizacja:</strong> po pierwszej aktywacji i zalogowaniu się do tej funkcji Aplikacja automatycznie wykonuje kopię zapasową, bezpiecznie przesyłając zaszyfrowany plik do Google Drive każdorazowo, gdy w lokalnym sejfie wykryta zostanie zmiana lub aktualizacja. Użytkownik może również w każdej chwili ręcznie wymusić przesłanie lub pobranie pliku z ustawień aplikacji.</li><li><strong>Najwyższy standard bezpieczeństwa i szyfrowania:</strong> wszystkie informacje eksportowane lub zapisywane w kopii zapasowej poza lokalnym sejfem są przetwarzane zgodnie z najbardziej rygorystycznymi standardami bezpieczeństwa informacji. W przypadku opcjonalnych kopii zapasowych w chmurze (Google Drive) Aplikacja przesyła plik bazy danych chroniony natywnym szyfrowaniem SQLCipher (AES-256 i PBKDF2 z 600 000 iteracji). W przypadku ręcznych eksportów do plików lokalnych (np. w formacie .cjson) stosowana jest niezależna warstwa zabezpieczeń wykorzystująca protokół AES-256-GCM oraz wyprowadzanie kluczy za pomocą Argon2id. W żadnym wypadku deweloper Cerberus nie posiada serwerów pośredniczących, kanałów przechwytywania ani technicznej możliwości uzyskania dostępu do danych użytkownika, ich odczytania lub odszyfrowania.</li><li>Korzystanie przez Cerberus z informacji otrzymanych za pośrednictwem interfejsów API Google odbywa się zgodnie z Polityką dotyczącą danych użytkowników usług API Google (Google API Services User Data Policy), w tym z wymogami dotyczącymi ograniczonego wykorzystania (Limited Use).</li>',
+                section4Title: '4. Bezpieczeństwo danych',
+                section4P1: 'Aby chronić prywatność wizualną użytkownika i zapobiegać pasywnym wyciekom informacji, Aplikacja wykorzystuje natywną flagę bezpieczeństwa systemu operacyjnego (FLAG_SECURE). Flaga ta całkowicie zabrania wykonywania zrzutów i nagrań ekranu w aplikacji oraz w pełni skrywa zawartość interfejsu w menu ostatnio używanych aplikacji (wielozadaniowość) urządzenia. Ponadto wyłączono automatyczną kopię zapasową systemu Android (allowBackup="false"), aby zapobiec niekontrolowanym kopiom zapasowym wykonywanym przez system operacyjny.',
+                section5Title: '5. Zmiany niniejszej Polityki Prywatności',
+                section5P1: 'Zastrzegamy sobie prawo do aktualizacji niniejszej Polityki Prywatności w przyszłych wersjach Aplikacji, w celu odzwierciedlenia usprawnień lub zmian technicznych. Każda istotna zmiana zostanie przejrzyście zakomunikowana w interfejsie samej Aplikacji Cerberus.',
+                section6Title: '6. Kontakt',
+                section6P1: 'W przypadku pytań dotyczących lokalnego działania i prywatności Cerberus można skontaktować się pod adresem:',
+                contactText: '<a href="mailto:cerberus.keypass@gmail.com">cerberus.keypass@gmail.com</a>'
+            }
+        };
+
+        const buttons = document.querySelectorAll('.lang-switcher button');
+        const titleEl = document.getElementById('page-title');
+        const introEl = document.getElementById('page-intro');
+        const introTextEl = document.getElementById('intro-text');
+        const section1TitleEl = document.getElementById('section-1-title');
+        const section1P1El = document.getElementById('section-1-p1');
+        const section1P2El = document.getElementById('section-1-p2');
+        const section2TitleEl = document.getElementById('section-2-title');
+        const section2P1El = document.getElementById('section-2-p1');
+        const section2ListEl = document.getElementById('section-2-list');
+        const section3TitleEl = document.getElementById('section-3-title');
+        const section3P1El = document.getElementById('section-3-p1');
+        const section3ListEl = document.getElementById('section-3-list');
+        const section4TitleEl = document.getElementById('section-4-title');
+        const section4P1El = document.getElementById('section-4-p1');
+        const section5TitleEl = document.getElementById('section-5-title');
+        const section5P1El = document.getElementById('section-5-p1');
+        const section6TitleEl = document.getElementById('section-6-title');
+        const section6P1El = document.getElementById('section-6-p1');
+        const contactBoxEl = document.getElementById('contact-box');
+
+        function setLanguage(lang) {
+            const content = translations[lang] || translations.es;
+            titleEl.textContent = content.title;
+            introEl.textContent = content.intro;
+            introTextEl.innerHTML = content.introText;
+            section1TitleEl.textContent = content.section1Title;
+            section1P1El.textContent = content.section1P1;
+            section1P2El.textContent = content.section1P2;
+            section2TitleEl.textContent = content.section2Title;
+            section2P1El.textContent = content.section2P1;
+            section2ListEl.innerHTML = content.section2List;
+            section3TitleEl.textContent = content.section3Title;
+            section3P1El.textContent = content.section3P1;
+            section3ListEl.innerHTML = content.section3List;
+            section4TitleEl.textContent = content.section4Title;
+            section4P1El.innerHTML = content.section4P1;
+            section5TitleEl.textContent = content.section5Title;
+            section5P1El.textContent = content.section5P1;
+            section6TitleEl.textContent = content.section6Title;
+            section6P1El.textContent = content.section6P1;
+            contactBoxEl.innerHTML = `<a href="mailto:cerberus.keypass@gmail.com">${content.contactText.replace(/<[^>]+>/g, '')}</a>`;
+            document.documentElement.lang = lang === 'es' ? 'es' : 'en';
+            buttons.forEach(btn => btn.classList.toggle('active', btn.dataset.lang === lang));
+        }
+
+        buttons.forEach(button => {
+            button.addEventListener('click', () => setLanguage(button.dataset.lang));
+        });
+
+        setLanguage('es');
+    </script>
 </body>
 </html>
